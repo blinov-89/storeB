@@ -28,6 +28,7 @@ engine = sqlalchemy.create_engine(
 
 metadata.create_all(engine)
 
+#получение данных от пользователя
 class ItemIn(BaseModel):
     name: str
     count: int
@@ -77,6 +78,6 @@ async def create_item(item: ItemIn):
 
 @app.delete("/item/{item_id}")
 async def delete_item(item_id: int):
-    query = store.delete().where(id == item_id)
+    query = store.delete().where(store.c.id == item_id)
     await database.execute(query)
-    return {"detail": "Item deleted", "status_code": 204}
+    return {"detail": "Item deleted"}
