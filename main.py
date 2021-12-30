@@ -36,7 +36,7 @@ class ItemIn(BaseModel):
     price: float
     size: float
 
-
+#модель того как хранятся данные в базе данных
 class Item(BaseModel):
     id: int
     name: str
